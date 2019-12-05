@@ -1,0 +1,41 @@
+.title {
+  /* font-family: 'Ubuntu', sans-serif !important; */
+  font-family: 'Montserrat', sans-serif !important;
+  color: lightgrey;
+  font-weight: 500;
+  font-size: 25px;
+}
+
+.document-container {
+  max-width: 85vw;
+}
+
+.document-source {
+  color: #d39f10;
+  font-size: 14px;
+  font-weight: 500px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.document-title {
+  color: #eee;
+  font-size: 25px;
+  font-family: 'Ubuntu', sans-serif;
+  margin-top: -4px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.document-prev-content {
+  color: lightgrey;
+  font-size: 15px;
+  font-family: 'Ubuntu', sans-serif;
+  line-height: 25px;
+  width: 85%;
+}
+
+.commentIcon {
+  color: #d39f10;
+  margin-top: 15px;
+  padding: 0px 10px;
+}

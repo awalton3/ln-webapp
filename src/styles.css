@@ -1,0 +1,63 @@
+/* You can add global styles to this file, and also import other style files */
+
+.action-button-med {
+	font-family: 'Montserrat', sans-serif !important;
+	font-size: 14px ;
+	font-weight: 600 !important;
+}
+
+.action-button {
+	border-radius: 33.5px !important;
+	font-family: 'Montserrat', sans-serif !important;
+	font-weight: 600 !important;
+	width: 300px !important;
+	font-size: 16px !important;
+	color: #0C2340 !important;
+	background-color: #D39F10 !important;
+	padding: 1px 0px !important;
+}
+
+@media only screen and (max-width: 330px) {
+	.action-button {
+		width: 250px !important;
+	}
+}
+
+.fixed-toolbar {
+	position: fixed !important;
+	z-index: 1000 !important;
+	top: 0 !important;
+}
+
+.transparent-toolbar {
+	opacity: 0.6 !important;
+}
+
+.chip {
+	font-family: 'Montserrat', sans-serif !important;
+	font-weight: 500 !important;
+	color: black !important;
+}
+
+.icon-chip {
+	font-size: 20px !important;
+	margin-left: -5px !important;
+}
+
+.chip-text {
+	padding-left: 10px !important;
+}
+
+/* Dialogue */
+.docViewerContainer .mat-dialog-container{
+  padding: 0 !important;
+}
+
+/* Bottom Fab Button */ 
+.bottom-right-fab {
+	position: fixed;
+	bottom: 0 !important;
+	right: 0 !important;
+	padding: 40px !important;
+	color: #ff8b0b !important;
+}

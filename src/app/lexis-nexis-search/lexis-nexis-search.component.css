@@ -1,0 +1,102 @@
+.container {
+  background-color: #0C2340;
+  height: 100vh;
+  width: 100vw;
+}
+
+.form-container {
+  height: 85%;
+}
+
+.searchForm {
+  width: 100%;
+}
+
+.form-label {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.logo {
+  width: 350px;
+}
+
+.title {
+  /* font-family: 'Ubuntu', sans-serif !important; */
+  font-family: 'Montserrat', sans-serif !important;
+  color: lightgrey;
+  font-weight: 600;
+  font-size: 35px;
+  text-transform: uppercase;
+}
+
+.toolbar {
+  background-color: #0C2340;
+  padding: 20px 20px;
+}
+
+.searchLocalLink {
+  font-family: 'Ubuntu', sans-serif !important;
+  font-weight: 400;
+  color: #30546c;
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.icon {
+  color: #D39F10;
+  font-size: 28px;
+  padding: 10px;
+  vertical-align: middle;
+}
+
+input {
+  color: lightgrey !important;
+}
+
+mat-form-field {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+:host ::ng-deep .mat-form-field-label {
+  font-family: 'Ubuntu', sans-serif;
+  color: #30546c !important;
+}
+
+:host ::ng-deep .mat-select-value {
+  color: #eee !important;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+:host ::ng-deep .mat-select-arrow {
+  color: #30546c;
+}
+
+:host ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: #30546c !important;
+}
+
+/* :host ::ng-deep .mat-form-field-infix {
+  border-top: 1.5em solid transparent !important;
+} */
+
+::ng-deep .mat-calendar-header {
+  background-color: #0c2340 !important;
+  color: #D39F10 !important;
+}
+
+::ng-deep .mat-calendar-next-button {
+  color: #D39F10 !important;
+}
+
+::ng-deep .mat-calendar-previous-button {
+  color: #D39F10 !important;
+}
+
+::ng-deep .mat-calendar-arrow {
+  border-top-color: #D39F10 !important;
+}
+
+::ng-deep .mat-datepicker-toggle {
+  color: #D39F10 !important;
+}

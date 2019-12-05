@@ -1,0 +1,36 @@
+.toolbar {
+   background-color: #0c2340;
+}
+
+.document-content {
+  margin-top: 100px;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 18px;
+  line-height: 28px;
+  padding: 0px 170px;
+}
+
+.document-title {
+  color: #0c2340;
+  font-size: 42px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 500;
+  width: 70vw;
+  line-height: 50px;
+  padding: 10px;
+}
+
+.document-source {
+  padding-left: 20px;
+  font-family: 'Ubuntu', sans-serif;
+  color: #d39f10;
+}
+
+.backIcon {
+  color: #eee;
+  cursor: pointer;
+}
+
+.mat-button:not([disabled]):hover {
+   background-color: transparent;
+ }

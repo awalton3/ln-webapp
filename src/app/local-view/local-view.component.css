@@ -1,0 +1,55 @@
+.searchForm {
+  width: 100%;
+  color: #eee;
+  margin-right: 100px;
+}
+
+input {
+  font-family: 'Ubuntu', sans-serif;
+  color: #30546c
+}
+
+.toolbar {
+  /* background-color: #0c2340; */
+  background-color: #eee;
+  padding: 10px 20px;
+  font-family: 'Montserrat', sans-serif !important;
+  width: 100vw;
+}
+
+.title {
+  font-size: 18px;
+  /* color: #eee; */
+  color: #0c2340;
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 500;
+}
+
+.searchIcon {
+  color: #d39f10;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.form-field-container {
+  width: 95%;
+}
+
+.documents-container {
+  padding: 50px;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+:host ::ng-deep .mat-form-field-label {
+  font-family: 'Ubuntu', sans-serif;
+  color: #30546c !important;
+}
+
+:host ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: #30546c !important;
+}
+
+:host ::ng-deep .mat-expansion-panel {
+  border-radius: 0 !important;
+}

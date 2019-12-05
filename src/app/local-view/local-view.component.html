@@ -1,0 +1,42 @@
+<div style="background-color: #0f2a4d">
+
+  <mat-expansion-panel #searchBar class="toolbar fixed-toolbar" hideToggle="true">
+
+    <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="space-between center" fxFill>
+      <mat-panel-title fxLayoutAlign="start center" style="width: 90vw">
+        <i (click)="navigateToLexis()" class="material-icons" style="color: #0f2a4d; padding-right: 15px; font-size: 25px;">arrow_back</i>
+        <p class="title">LOCAL DOCUMENTS</p>
+      </mat-panel-title>
+      <mat-panel-description fxLayoutAlign="start center">
+        <i *ngIf="!searchBar.expanded" class="material-icons searchIcon">search</i>
+        <i *ngIf="searchBar.expanded" class="material-icons searchIcon">expand_less</i>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+
+    <form [formGroup]="searchForm" class="searchForm">
+
+      <mat-form-field class="form-field-container">
+        <mat-chip-list #filters aria-label="Filters">
+          <mat-chip *ngFor="let tag of selectedDoc.tags" [selectable]="selectable" [removable]="removable" (removed)="removeTag(tag)" class="chip">
+            <i class="material-icons icon-chip" fxLayoutAlign="center center" matChipRemove *ngIf="removable">cancel</i>
+            <p class="chip-text">{{ tag }}</p>
+          </mat-chip>
+          <input placeholder="Add filters" [matChipInputFor]="filters" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="addTag($event)">
+        </mat-chip-list>
+      </mat-form-field>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="form-field-container">
+        <span></span>
+        <button mat-button color="accent" class="action-button-med" (click)="onSearch(); searchBar.close()">SEARCH</button>
+      </div>
+
+    </form>
+
+  </mat-expansion-panel>
+
+  <div class="documents-container" fxLayout="column" fxLayoutAlign="start start" (click)="checkStateSearchBar()">
+    <app-document *ngFor="let document of documents" [document]="testDoc" (onDocClick)="onSelectDoc(document); openDocViewer()"></app-document>
+  </div>
+
+</div>

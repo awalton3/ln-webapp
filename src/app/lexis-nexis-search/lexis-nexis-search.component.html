@@ -1,0 +1,55 @@
+<div class="container">
+
+  <mat-toolbar fxLayout="row" fxLayoutAlign="space-between center" class="toolbar">
+    <img src="/assets/ndLexisNexis-logo.png" alt="logo" class="logo">
+    <button mat-raised-button color="accent" class="action-button-med" style="color: #0C2340" (click)="navigateToLocal()">SEARCH LOCALLY</button>
+  </mat-toolbar>
+
+  <div fxLayout="column" fxLayoutAlign="center center" class="form-container">
+
+    <div fxLayout="column" fxLayoutAlign="center center">
+
+      <p class="title">Search LexisNexis</p>
+
+      <form [formGroup]="searchForm" class="searchForm" fxLayout="column" fxLayoutAlign="center center">
+
+        <!-- Keyword -->
+        <mat-form-field fxFill>
+          <mat-label class="form-label">Keyword</mat-label>
+          <input matInput formControlName="keyword" type="text" class="form-input-width">
+        </mat-form-field>
+
+        <!-- Dates -->
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <mat-form-field>
+            <mat-label class="form-label">From:</mat-label>
+            <input matInput [matDatepicker]="dateToPicker" formControlName="dateFrom">
+            <mat-datepicker-toggle matSuffix [for]="dateToPicker"></mat-datepicker-toggle>
+            <mat-datepicker #dateToPicker color="base"></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label class="form-label">To:</mat-label>
+            <input matInput [matDatepicker]="dateFromPicker" formControlName="dateTo">
+            <mat-datepicker-toggle matSuffix [for]="dateFromPicker"></mat-datepicker-toggle>
+            <mat-datepicker #dateFromPicker color="base"></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <!-- Groups -->
+        <mat-form-field fxFill>
+          <mat-select placeholder="Select Group" formControlName="groups" multiple>
+            <mat-option *ngFor="let group of validGroups" value="group">{{ group }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <br><br>
+        <button mat-raised-button color="accent" type="button" class="action-button">SEARCH</button>
+
+      </form>
+
+
+    </div>
+
+  </div>
+
+</div>

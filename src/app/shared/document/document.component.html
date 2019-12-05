@@ -1,0 +1,20 @@
+<div class="document-container" fxLayout="row" fxLayoutAlign="space-between start">
+  <div>
+    <p class="document-source">{{ document.source | uppercase }}</p>
+    <p class="document-title" (click)="onDocumentClicked()">{{ document.title }}</p>
+    <p class="document-prev-content">
+      {{ document.preview }}
+    </p>
+  </div>
+  <div fxLayout="row">
+    <i *ngIf="document.comment.length != 0" class="material-icons commentIcon" [matTooltip]="document.comment">comment</i>
+    <i *ngIf="document.tags.length !=0 " class="material-icons commentIcon" [matTooltip]="document.tags">category</i>
+    <span *ngIf="document.comment.length == 0"></span>
+    <span *ngIf="document.tags.length == 0"></span>
+  </div>
+</div>
+
+
+<br>
+<mat-divider></mat-divider>
+<br>
