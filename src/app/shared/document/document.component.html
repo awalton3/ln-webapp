@@ -7,9 +7,9 @@
     </p>
   </div>
   <div fxLayout="row">
-    <i *ngIf="document.comment.length != 0" class="material-icons commentIcon" [matTooltip]="document.comment">comment</i>
-    <i *ngIf="document.tags.length !=0 " class="material-icons commentIcon" [matTooltip]="document.tags">category</i>
-    <span *ngIf="document.comment.length == 0"></span>
+    <i *ngIf="document.comments.length != 0" class="material-icons commentIcon" [matTooltip]="document.comments">comment</i>
+    <i *ngIf="document.tags.length != 0" class="material-icons commentIcon" [matTooltip]="document.tags">category</i>
+    <span *ngIf="document.comments.length == 0"></span>
     <span *ngIf="document.tags.length == 0"></span>
   </div>
 </div>

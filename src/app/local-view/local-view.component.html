@@ -18,7 +18,7 @@
 
       <mat-form-field class="form-field-container">
         <mat-chip-list #filters aria-label="Filters">
-          <mat-chip *ngFor="let tag of selectedDoc.tags" [selectable]="selectable" [removable]="removable" (removed)="removeTag(tag)" class="chip">
+          <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable" (removed)="removeTag(tag)" class="chip">
             <i class="material-icons icon-chip" fxLayoutAlign="center center" matChipRemove *ngIf="removable">cancel</i>
             <p class="chip-text">{{ tag }}</p>
           </mat-chip>
@@ -36,7 +36,7 @@
   </mat-expansion-panel>
 
   <div class="documents-container" fxLayout="column" fxLayoutAlign="start start" (click)="checkStateSearchBar()">
-    <app-document *ngFor="let document of documents" [document]="testDoc" (onDocClick)="onSelectDoc(document); openDocViewer()"></app-document>
+    <app-document *ngFor="let document of documents" [document]="document" (onDocClick)="onSelectDoc(document); openDocViewer()"></app-document>
   </div>
 
 </div>

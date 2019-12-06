@@ -6,6 +6,6 @@ export class Doc {
     public docId: string,
     public preview: string,
     public tags: string[],
-    public comment: string
+    public comments: string[]
   ) {}
 }

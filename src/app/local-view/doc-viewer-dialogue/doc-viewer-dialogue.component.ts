@@ -11,14 +11,14 @@ import { DocAttributeViewerBottomsheetComponent } from './doc-attribute-viewer-b
 
 export class DocViewerDialogueComponent implements OnInit {
 
-  ngOnInit(): void {
-    throw new Error("Method not implemented.");
-  }
-
   constructor(
     public dialogRef: MatDialogRef<DocViewerDialogueComponent>,
-    @Inject(MAT_DIALOG_DATA) public document: any,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private _bottomSheet: MatBottomSheet) { }
+
+  ngOnInit() {
+    console.log("VIEWER: ", this.data)
+  }
 
   closeDocViewer(): void {
     this.dialogRef.close();
