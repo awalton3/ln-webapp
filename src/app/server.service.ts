@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class ServerService {
 
-  baseUrl = 'http://student04.cse.nd.edu:51087/';
+  baseUrl = 'https://student04.cse.nd.edu:51087/';
 
   constructor(private http: HttpClient) { }
 
