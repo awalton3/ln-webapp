@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Doc } from '../shared/document/doc.model';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
@@ -27,28 +27,25 @@ export class LocalViewComponent implements OnInit {
   searchForm: FormGroup;
   documents: Doc[] = [];
   tags: string[] = [];
-  selectedDoc: Doc;
-  selectedDocContent: string;
+  contentLoaded: boolean;
+  docsExist: boolean;
 
-  constructor(public docViewer: MatDialog, private router: Router, private server: ServerService) { }
+  constructor(
+    public docViewer: MatDialog,
+    private router: Router,
+    private server: ServerService,
+    private ref: ChangeDetectorRef) { }
 
   ngOnInit() {
-
+    this.contentLoaded = false;
+    this.docsExist = true;
     this.initForm();
     this.documents = [];
     this.tags = [];
-    this.selectedDoc = null;
-    this.selectedDocContent = null;
 
     // If tags list is empty, show all documents by default
     if (this.tags.length == 0)
       this.showAllDocs()
-
-    // this.server.addTags(['gee', 'gee2', 'gee3'], '522J-GSJ1-DYNS-30WW-00000-00')
-    //   .subscribe(res => {
-    //     console.log("AFTER ADDING TAGS: ", res)
-    //   })
-
   }
 
   initForm() {
@@ -60,18 +57,13 @@ export class LocalViewComponent implements OnInit {
   showAllDocs() {
     this.server.getDocuments()
       .subscribe(docs => {
-        console.log(docs)
         this.updateDocsDisplayed(docs)
       })
   }
 
   onSelectDoc(document) {
-    // this.selectedDoc = document;
-    console.log("Requested DOC: ", document)
     this.server.getDocContentById(document.docId)
       .subscribe((res: { result: string, content: string }) => {
-        console.log("Requested Content: ", res)
-        // this.selectedDocContent = res.content;
         this.openDocViewer(document, res.content);
       })
   }
@@ -79,7 +71,7 @@ export class LocalViewComponent implements OnInit {
   addTag(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
-    if ((value || '').trim()) this.tags.push(value.trim());
+    if ((value || '').trim()) this.tags.push(value.trim().toLowerCase());
     if (input) input.value = '';
   }
 
@@ -101,41 +93,36 @@ export class LocalViewComponent implements OnInit {
       this.showAllDocs();
     } else {
       this.server.filter(this.tags)
-        .subscribe(docs => {
-
-          console.log("FILTER RES: ", docs)
-
-          // if (docIDs.doc_ids.length)
-          //   this.updateDocsDisplayed(docIDs.doc_ids)
+        .subscribe((docIds: { result: string, doc_ids: string[] }) => {
+          this.server.getDocsByIds(docIds.doc_ids)
+            .subscribe(docs => {
+              console.log(docs)
+              if (Object.keys(docs).length)
+                this.updateDocsDisplayed(docs)
+            })
         })
     }
   }
 
-  // updateDocsDisplayed(docs) {
-  //
-  //   let max_len = docIDs.length
-  //   if (max_len > 10)
-  //     max_len = 10
-  //
-  //   this.documents = []
-  //   for (let i = 0; i < max_len; i++) {
-  //     this.server.getDocById(docIDs[i]).subscribe((doc: any) => {
-  //       console.log(doc)
-  //       let newDoc = new Doc(doc.title, doc.source, doc.date, doc.DOC_ID, doc.preview, doc.tags, doc.comments)
-  //       this.documents.push(newDoc)
-  //     })
-  //   }
-  // }
-
   updateDocsDisplayed(docs) {
+    this.documents = []
     let docIds = Object.keys(docs)
-    docIds.shift()
-    for (let i = 0; i < Object.keys(docs).length; i++) {
+    docIds.shift() // get rid of results: success entry
+
+    for (let i = 0; i < docIds.length; i++) {
       let doc = docs[docIds[i]]
       let newDoc = new Doc(doc.title, doc.source, doc.date, doc.DOC_ID, doc.preview, doc.tags, doc.comments)
       this.documents.push(newDoc)
     }
-    // console.log(this.documents)
+    if (!this.documents.length) {
+      this.contentLoaded = true;
+      this.docsExist = false;
+      this.ref.detectChanges();
+    } else {
+      this.contentLoaded = true;
+      this.docsExist = true;
+      this.ref.detectChanges();
+    }
   }
 
   openDocViewer(document, content) {

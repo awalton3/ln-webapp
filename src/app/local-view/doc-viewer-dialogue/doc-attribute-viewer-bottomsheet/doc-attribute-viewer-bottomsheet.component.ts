@@ -36,19 +36,13 @@ export class DocAttributeViewerBottomsheetComponent implements OnInit {
     })
   }
 
-  openLink(event: MouseEvent): void {
-    this._bottomSheetRef.dismiss();
-    event.preventDefault();
-  }
-
   deleteComment(comment: string) {
     this.server.deleteComment(comment, this.data.docID)
       .subscribe(res => {
         let index = this.comments.indexOf(comment)
         this.comments.splice(index, 1)
         this.ref.detectChanges();
-        console.log("onDeleteComment: ", res)
-      })
+      }, error => console.log(error))
   }
 
   addComment() {
@@ -56,8 +50,7 @@ export class DocAttributeViewerBottomsheetComponent implements OnInit {
       .subscribe(res => {
         this.comments.push(this.addCommentForm.value.comment)
         this.ref.detectChanges();
-        console.log("onAddComment: ", res)
-      })
+      }, error => console.log(error))
   }
 
   addTag() {
@@ -65,12 +58,16 @@ export class DocAttributeViewerBottomsheetComponent implements OnInit {
       .subscribe(res => {
         this.tags.push(this.addTagForm.value.tag)
         this.ref.detectChanges();
-        console.log("onAddTag: ", res)
-      })
+      }, error => console.log(error))
   }
 
   deleteTag(tag: string) {
-
+    this.server.deleteTag(tag, this.data.docID)
+      .subscribe(res => {
+        let index = this.tags.indexOf(tag)
+        this.tags.splice(index, 1)
+        this.ref.detectChanges();
+      }, error => console.log(error))
   }
 
 }

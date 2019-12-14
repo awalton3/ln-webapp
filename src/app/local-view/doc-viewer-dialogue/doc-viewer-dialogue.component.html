@@ -11,7 +11,8 @@
 
     <p class="document-title">{{ data.document.title }}</p>
 
-    <p style="white-space: pre-wrap">{{ data.content }}</p>
+    <p *ngIf="data.content" style="white-space: pre-wrap">{{ data.content }}</p>
+    <p *ngIf="!data.content" style="white-space: pre-wrap"><i>No content available.</i></p>
   </div>
 
   <div class="bottom-right-fab">

@@ -35,8 +35,14 @@
 
   </mat-expansion-panel>
 
-  <div class="documents-container" fxLayout="column" fxLayoutAlign="center center" (click)="checkStateSearchBar()">
+  <div *ngIf="contentLoaded && docsExist" class="documents-container" fxLayout="column" fxLayoutAlign="center center" (click)="checkStateSearchBar()">
     <app-document *ngFor="let document of documents" [document]="document" (onDocClick)="onSelectDoc(document);"></app-document>
+  </div>
+  <div *ngIf="!contentLoaded && docsExist" fxLayout="column" fxLayoutAlign="center center" (click)="checkStateSearchBar()" style="height: 93vh">
+    <div class="loader">Loading...</div>
+  </div>
+  <div *ngIf="contentLoaded && !docsExist" class="documents-container" fxLayout="column" fxLayoutAlign="start start" (click)="checkStateSearchBar()">
+    <p class="title" style="color: #eee">No results matched that filter.</p>
   </div>
 
 </div>

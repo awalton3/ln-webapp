@@ -21,7 +21,7 @@
   <p class="title">Tags</p>
   <div *ngFor="let tag of tags" class="custom-list-item" fxLayout="row" fxLayoutAlign="space-between center">
     <p class="text">{{ tag }}</p>
-    <i class="material-icons close-icon" (click)="deleteComment(comment)">close</i>
+    <i class="material-icons close-icon" (click)="deleteTag(tag)">close</i>
   </div>
 
   <form [formGroup]="addTagForm" class="form">

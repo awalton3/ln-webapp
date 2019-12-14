@@ -15,6 +15,11 @@ export class ServerService {
     return this.http.get(this.baseUrl + "document/" + docId)
   }
 
+  getDocsByIds(docIds: string[]) {
+    let body = { 'doc_ids': docIds }
+    return this.http.post(this.baseUrl + "document/", JSON.stringify(body))
+  }
+
   filter(tags: string[]) {
     let body = { 'tags': tags }
     return this.http.post(this.baseUrl + "tags/", JSON.stringify(body));
@@ -37,6 +42,11 @@ export class ServerService {
   addTags(tags: string[], docId: string) {
     let body = { 'tags': tags }
     return this.http.put(this.baseUrl + "tags/" + docId, JSON.stringify(body))
+  }
+
+  deleteTag(tag: string, docId: string) {
+    let body = { 'tag': tag }
+    return this.http.post(this.baseUrl + "tags/" + docId, JSON.stringify(body))
   }
 
   getTags(docId) {
