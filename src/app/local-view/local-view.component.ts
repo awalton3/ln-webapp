@@ -44,10 +44,10 @@ export class LocalViewComponent implements OnInit {
     if (this.tags.length == 0)
       this.showAllDocs()
 
-    this.server.addTags(['gee', 'gee2', 'gee3'], '522J-GSJ1-DYNS-30WW-00000-00')
-      .subscribe(res => {
-        console.log("AFTER ADDING TAGS: ", res)
-      })
+    // this.server.addTags(['gee', 'gee2', 'gee3'], '522J-GSJ1-DYNS-30WW-00000-00')
+    //   .subscribe(res => {
+    //     console.log("AFTER ADDING TAGS: ", res)
+    //   })
 
   }
 
@@ -59,17 +59,19 @@ export class LocalViewComponent implements OnInit {
 
   showAllDocs() {
     this.server.getDocuments()
-      .subscribe((docIds: { result: string, doc_ids: string[] }) => {
-        this.updateDocsDisplayed(docIds.doc_ids)
+      .subscribe(docs => {
+        console.log(docs)
+        this.updateDocsDisplayed(docs)
       })
   }
 
   onSelectDoc(document) {
-    this.selectedDoc = document;
-    this.server.getDocContentById('4JHN-4PB0-TW9S-220N-00000-00')
+    // this.selectedDoc = document;
+    console.log("Requested DOC: ", document)
+    this.server.getDocContentById(document.docId)
       .subscribe((res: { result: string, content: string }) => {
         console.log("Requested Content: ", res)
-        this.selectedDocContent = res.content;
+        // this.selectedDocContent = res.content;
         this.openDocViewer(document, res.content);
       })
   }
@@ -99,28 +101,41 @@ export class LocalViewComponent implements OnInit {
       this.showAllDocs();
     } else {
       this.server.filter(this.tags)
-        .subscribe((docIDs: { result: string, doc_ids: string[] }) => {
-          console.log("FILTER RES: ", docIDs)
-          if (docIDs.doc_ids.length)
-            this.updateDocsDisplayed(docIDs.doc_ids)
+        .subscribe(docs => {
+
+          console.log("FILTER RES: ", docs)
+
+          // if (docIDs.doc_ids.length)
+          //   this.updateDocsDisplayed(docIDs.doc_ids)
         })
     }
   }
 
-  updateDocsDisplayed(docIDs: string[]) {
+  // updateDocsDisplayed(docs) {
+  //
+  //   let max_len = docIDs.length
+  //   if (max_len > 10)
+  //     max_len = 10
+  //
+  //   this.documents = []
+  //   for (let i = 0; i < max_len; i++) {
+  //     this.server.getDocById(docIDs[i]).subscribe((doc: any) => {
+  //       console.log(doc)
+  //       let newDoc = new Doc(doc.title, doc.source, doc.date, doc.DOC_ID, doc.preview, doc.tags, doc.comments)
+  //       this.documents.push(newDoc)
+  //     })
+  //   }
+  // }
 
-    let max_len = docIDs.length
-    if (max_len > 10)
-      max_len = 10
-
-    this.documents = []
-    for (let i = 0; i < max_len; i++) {
-      this.server.getDocById(docIDs[i]).subscribe((doc: any) => {
-        console.log(doc)
-        let newDoc = new Doc(doc.title, doc.source, doc.date, doc.DOC_ID, doc.preview, doc.tags, doc.comments)
-        this.documents.push(newDoc)
-      })
+  updateDocsDisplayed(docs) {
+    let docIds = Object.keys(docs)
+    docIds.shift()
+    for (let i = 0; i < Object.keys(docs).length; i++) {
+      let doc = docs[docIds[i]]
+      let newDoc = new Doc(doc.title, doc.source, doc.date, doc.DOC_ID, doc.preview, doc.tags, doc.comments)
+      this.documents.push(newDoc)
     }
+    // console.log(this.documents)
   }
 
   openDocViewer(document, content) {
