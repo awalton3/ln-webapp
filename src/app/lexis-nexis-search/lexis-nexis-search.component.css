@@ -60,7 +60,7 @@ mat-form-field {
 
 :host ::ng-deep .mat-form-field-label {
   font-family: 'Ubuntu', sans-serif;
-  color: #30546c !important;
+  color: #5AABBC!important;
 }
 
 :host ::ng-deep .mat-select-value {
@@ -73,7 +73,7 @@ mat-form-field {
 }
 
 :host ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
-  background-color: #30546c !important;
+  background-color: #5AABBC!important;
 }
 
 /* :host ::ng-deep .mat-form-field-infix {

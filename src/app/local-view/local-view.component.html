@@ -1,4 +1,4 @@
-<div style="background-color: #0f2a4d">
+<div style="background-color: #0f2a4d; height: 100%; min-height: 100vh;">
 
   <mat-expansion-panel #searchBar class="toolbar fixed-toolbar" hideToggle="true">
 
@@ -35,8 +35,8 @@
 
   </mat-expansion-panel>
 
-  <div class="documents-container" fxLayout="column" fxLayoutAlign="start start" (click)="checkStateSearchBar()">
-    <app-document *ngFor="let document of documents" [document]="document" (onDocClick)="onSelectDoc(document); openDocViewer()"></app-document>
+  <div class="documents-container" fxLayout="column" fxLayoutAlign="center center" (click)="checkStateSearchBar()">
+    <app-document *ngFor="let document of documents" [document]="document" (onDocClick)="onSelectDoc(document);"></app-document>
   </div>
 
 </div>

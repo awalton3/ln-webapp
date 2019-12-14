@@ -2,9 +2,8 @@
   <div>
     <p class="document-source">{{ document.source | uppercase }}</p>
     <p class="document-title" (click)="onDocumentClicked()">{{ document.title }}</p>
-    <p class="document-prev-content">
-      {{ document.preview }}
-    </p>
+    <p *ngIf="document.preview" class="document-prev-content">{{ document.preview }}</p>
+    <p *ngIf="!document.preview" class="document-prev-content" style="width: 79vw"><i>No preview available.</i></p>
   </div>
   <div fxLayout="row">
     <i *ngIf="document.comments.length != 0" class="material-icons commentIcon" [matTooltip]="document.comments">comment</i>
@@ -13,7 +12,6 @@
     <span *ngIf="document.tags.length == 0"></span>
   </div>
 </div>
-
 
 <br>
 <mat-divider></mat-divider>

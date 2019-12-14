@@ -1,0 +1,67 @@
+.container {
+  height: 60vh;
+  padding: 30px;
+  width: 35vw;
+  background-color: #0c2340;
+}
+
+.title {
+  color: #eee;
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.custom-list-item {
+  margin: 0;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 0px 20px;
+  background-color: transparent;
+  border: 2px solid #5AABBC; 
+}
+
+.text {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 15px;
+  color: #5AABBC;
+}
+
+.close-icon {
+  color: #AE9142;
+  cursor: pointer;
+  padding: 7px;
+}
+
+.form {
+  width: 100%;
+  margin: 0 5px;
+}
+
+.form-field {
+  width: 100%;
+}
+
+.form-field-field {
+  width: 73%;
+}
+
+::ng-deep .mat-bottom-sheet-container {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+:host ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: #30546c !important;
+}
+
+:host ::ng-deep .mat-form-field-label {
+  font-family: 'Ubuntu', sans-serif;
+  color: #30546c !important;
+}
+
+input {
+  color: #eee;
+  font-family: 'Ubuntu', sans-serif;
+}

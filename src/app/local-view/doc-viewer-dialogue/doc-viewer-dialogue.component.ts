@@ -17,7 +17,7 @@ export class DocViewerDialogueComponent implements OnInit {
     private _bottomSheet: MatBottomSheet) { }
 
   ngOnInit() {
-    console.log("VIEWER: ", this.data)
+    console.log("IN VIEWER: ", this.data)
   }
 
   closeDocViewer(): void {
@@ -25,7 +25,13 @@ export class DocViewerDialogueComponent implements OnInit {
   }
 
   openAttributeEditor() {
-    this._bottomSheet.open(DocAttributeViewerBottomsheetComponent)
+    this._bottomSheet.open(DocAttributeViewerBottomsheetComponent, {
+      data: {
+        comments: this.data.document.comments,
+        tags: this.data.document.tags,
+        docID: this.data.document.docId
+      }
+    })
   }
 
 }

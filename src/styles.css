@@ -53,11 +53,16 @@
   padding: 0 !important;
 }
 
-/* Bottom Fab Button */ 
+/* Bottom Fab Button */
 .bottom-right-fab {
 	position: fixed;
 	bottom: 0 !important;
 	right: 0 !important;
 	padding: 40px !important;
 	color: #ff8b0b !important;
+}
+
+::ng-deep .mat-bottom-sheet-container {
+	margin: 0 !important;
+	padding: 0 !important;
 }
