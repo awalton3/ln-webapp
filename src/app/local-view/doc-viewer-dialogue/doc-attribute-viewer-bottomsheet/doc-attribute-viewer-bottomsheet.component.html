@@ -1,36 +1,36 @@
 
 <div class="container">
 
-  <p class="title">Comments</p>
-  <div *ngFor="let comment of comments" class="custom-list-item" fxLayout="row" fxLayoutAlign="space-between center">
-    <p class="text">{{ comment }}</p>
-    <i class="material-icons close-icon" (click)="deleteComment(comment)">close</i>
-  </div>
-
-  <form [formGroup]="addCommentForm" class="form">
-    <div class="form-field" fxLayout="row" fxLayoutAlign="space-around center" fxFill>
-      <mat-form-field floatLabel="never" class="form-field-field">
-        <input type="text" placeholder="Add comment" formControlName="comment" matInput fxFill>
-      </mat-form-field>
-      <i fxLayoutAlign="center center" class="material-icons close-icon" (click)="addComment()">add</i>
+    <p class="title">Comments</p>
+    <div *ngFor="let comment of comments" class="custom-list-item" fxLayout="row" fxLayoutAlign="space-between center">
+      <p class="text">{{ comment }}</p>
+      <i class="material-icons close-icon" (click)="deleteComment(comment)">close</i>
     </div>
-  </form>
 
-  <br>
+    <form [formGroup]="addCommentForm" class="form">
+      <div class="form-field" fxLayout="row" fxLayoutAlign="space-around center" fxFill>
+        <mat-form-field floatLabel="never" class="form-field-field">
+          <input type="text" placeholder="Add comment" formControlName="comment" matInput fxFill>
+        </mat-form-field>
+        <i fxLayoutAlign="center center" class="material-icons close-icon" (click)="addComment()">add</i>
+      </div>
+    </form>
 
-  <p class="title">Tags</p>
-  <div *ngFor="let tag of tags" class="custom-list-item" fxLayout="row" fxLayoutAlign="space-between center">
-    <p class="text">{{ tag }}</p>
-    <i class="material-icons close-icon" (click)="deleteTag(tag)">close</i>
-  </div>
+    <br>
 
-  <form [formGroup]="addTagForm" class="form">
-    <div class="form-field" fxLayout="row" fxLayoutAlign="space-around center" fxFill>
-      <mat-form-field floatLabel="never" class="form-field-field">
-        <input type="text" placeholder="Add tag" formControlName="tag" matInput>
-      </mat-form-field>
-      <i fxLayoutAlign="center center" class="material-icons close-icon" (click)="addTag()">add</i>
+    <p class="title">Tags</p>
+    <div *ngFor="let tag of tags" class="custom-list-item" fxLayout="row" fxLayoutAlign="space-between center">
+      <p class="text">{{ tag }}</p>
+      <i class="material-icons close-icon" (click)="deleteTag(tag)">close</i>
     </div>
-  </form>
+
+    <form [formGroup]="addTagForm" class="form">
+      <div class="form-field" fxLayout="row" fxLayoutAlign="space-around center" fxFill>
+        <mat-form-field floatLabel="never" class="form-field-field">
+          <input type="text" placeholder="Add tag" formControlName="tag" matInput>
+        </mat-form-field>
+        <i fxLayoutAlign="center center" class="material-icons close-icon" (click)="addTag()">add</i>
+      </div>
+    </form>
 
 </div>

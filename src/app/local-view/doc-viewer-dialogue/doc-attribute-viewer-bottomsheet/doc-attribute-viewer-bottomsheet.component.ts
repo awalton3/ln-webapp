@@ -50,6 +50,7 @@ export class DocAttributeViewerBottomsheetComponent implements OnInit {
       .subscribe(res => {
         this.comments.push(this.addCommentForm.value.comment)
         this.ref.detectChanges();
+        this.addCommentForm.reset()
       }, error => console.log(error))
   }
 
@@ -58,6 +59,7 @@ export class DocAttributeViewerBottomsheetComponent implements OnInit {
       .subscribe(res => {
         this.tags.push(this.addTagForm.value.tag)
         this.ref.detectChanges();
+        this.addTagForm.reset()
       }, error => console.log(error))
   }
 

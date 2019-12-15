@@ -17,7 +17,7 @@
 }
 
 .logo {
-  width: 350px;
+  width: 330px;
 }
 
 .title {
@@ -27,11 +27,12 @@
   font-weight: 600;
   font-size: 35px;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .toolbar {
   background-color: #0C2340;
-  padding: 20px 20px;
+  padding: 15px;
 }
 
 .searchLocalLink {
@@ -48,6 +49,23 @@
   font-size: 28px;
   padding: 10px;
   vertical-align: middle;
+}
+
+.input--width {
+  width: 400px;
+}
+
+.input--halfwidth {
+  width: 200px;
+}
+
+@media screen and (max-width: 500px) {
+  .input--width {
+    width: 250px;
+  }
+  .input--half {
+    width: 100px;
+  }
 }
 
 input {
