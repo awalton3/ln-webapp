@@ -7,6 +7,7 @@ import { DocViewerDialogueComponent } from './doc-viewer-dialogue/doc-viewer-dia
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ServerService } from '../server.service';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-local-view',
@@ -34,9 +35,11 @@ export class LocalViewComponent implements OnInit {
     public docViewer: MatDialog,
     private router: Router,
     private server: ServerService,
+    private appService: AppService,
     private ref: ChangeDetectorRef) { }
 
   ngOnInit() {
+    this.listenForDocChanges();
     this.contentLoaded = false;
     this.docsExist = true;
     this.initForm();
@@ -52,6 +55,16 @@ export class LocalViewComponent implements OnInit {
     this.searchForm = new FormGroup({
       'keyword': new FormControl(null)
     })
+  }
+
+  listenForDocChanges() {
+    this.appService.onAttributeCrud
+      .subscribe(onDocAttributeChange => {
+        if (this.tags.length == 0)
+          this.showAllDocs()
+        else
+          this.onSearch();
+      })
   }
 
   showAllDocs() {
@@ -96,7 +109,6 @@ export class LocalViewComponent implements OnInit {
         .subscribe((docIds: { result: string, doc_ids: string[] }) => {
           this.server.getDocsByIds(docIds.doc_ids)
             .subscribe(docs => {
-              console.log(docs)
               if (Object.keys(docs).length)
                 this.updateDocsDisplayed(docs)
             })

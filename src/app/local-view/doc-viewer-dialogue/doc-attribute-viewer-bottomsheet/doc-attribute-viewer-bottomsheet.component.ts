@@ -2,6 +2,7 @@ import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
 import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 import { ServerService } from 'src/app/server.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-doc-attribute-viewer-bottomsheet',
@@ -19,6 +20,7 @@ export class DocAttributeViewerBottomsheetComponent implements OnInit {
     private _bottomSheetRef: MatBottomSheetRef<DocAttributeViewerBottomsheetComponent>,
     @Inject(MAT_BOTTOM_SHEET_DATA) public data: any,
     private server: ServerService,
+    private appService: AppService,
     private ref: ChangeDetectorRef) { }
 
   ngOnInit() {
@@ -42,6 +44,7 @@ export class DocAttributeViewerBottomsheetComponent implements OnInit {
         let index = this.comments.indexOf(comment)
         this.comments.splice(index, 1)
         this.ref.detectChanges();
+        this.appService.onAttributeCrud.next();
       }, error => console.log(error))
   }
 
@@ -51,6 +54,7 @@ export class DocAttributeViewerBottomsheetComponent implements OnInit {
         this.comments.push(this.addCommentForm.value.comment)
         this.ref.detectChanges();
         this.addCommentForm.reset()
+        this.appService.onAttributeCrud.next();
       }, error => console.log(error))
   }
 
@@ -59,7 +63,8 @@ export class DocAttributeViewerBottomsheetComponent implements OnInit {
       .subscribe(res => {
         this.tags.push(this.addTagForm.value.tag)
         this.ref.detectChanges();
-        this.addTagForm.reset()
+
+        this.appService.onAttributeCrud.next();
       }, error => console.log(error))
   }
 
@@ -69,6 +74,7 @@ export class DocAttributeViewerBottomsheetComponent implements OnInit {
         let index = this.tags.indexOf(tag)
         this.tags.splice(index, 1)
         this.ref.detectChanges();
+        this.appService.onAttributeCrud.next();
       }, error => console.log(error))
   }
 
