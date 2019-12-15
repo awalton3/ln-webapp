@@ -55,6 +55,8 @@ export class DocAttributeViewerBottomsheetComponent implements OnInit {
         this.ref.detectChanges();
         this.addCommentForm.reset()
         this.appService.onAttributeCrud.next();
+        this.server.getDocById(this.data.docID)
+          .subscribe(res => console.log("Target: ", res))
       }, error => console.log(error))
   }
 
@@ -63,7 +65,6 @@ export class DocAttributeViewerBottomsheetComponent implements OnInit {
       .subscribe(res => {
         this.tags.push(this.addTagForm.value.tag)
         this.ref.detectChanges();
-
         this.appService.onAttributeCrud.next();
       }, error => console.log(error))
   }

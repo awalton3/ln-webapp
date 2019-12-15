@@ -28,7 +28,10 @@
 
       <div fxLayout="row" fxLayoutAlign="space-between center" class="form-field-container">
         <span></span>
-        <button mat-button color="accent" class="action-button-med" (click)="onSearch(); searchBar.close()">SEARCH</button>
+        <div>
+          <button mat-button color="accent" class="action-button-med" (click)="onClear(); searchBar.close()">CLEAR</button>
+          <button mat-button color="accent" class="action-button-med" (click)="onSearch(); searchBar.close()">SEARCH</button>
+        </div>
       </div>
 
     </form>

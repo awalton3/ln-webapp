@@ -70,6 +70,7 @@ export class LocalViewComponent implements OnInit {
   showAllDocs() {
     this.server.getDocuments()
       .subscribe(docs => {
+        console.log('hello!')
         this.updateDocsDisplayed(docs)
       })
   }
@@ -114,6 +115,11 @@ export class LocalViewComponent implements OnInit {
             })
         })
     }
+  }
+
+  onClear() {
+    this.tags = []
+    this.onSearch()
   }
 
   updateDocsDisplayed(docs) {
