@@ -64,6 +64,7 @@ export class DocAttributeViewerBottomsheetComponent implements OnInit {
     this.server.addTags([this.addTagForm.value.tag], this.data.docID)
       .subscribe(res => {
         this.tags.push(this.addTagForm.value.tag)
+        this.addTagForm.reset();
         this.ref.detectChanges();
         this.appService.onAttributeCrud.next();
       }, error => console.log(error))

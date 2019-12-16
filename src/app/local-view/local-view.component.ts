@@ -115,6 +115,7 @@ export class LocalViewComponent implements OnInit {
             })
         })
     }
+    window.scroll(0,0)
   }
 
   onClear() {
